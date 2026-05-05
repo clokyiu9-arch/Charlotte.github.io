@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chan Lok Yiu | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: #fff7f2;
+            color: #2e2a27;
+            line-height: 1.45;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #fde9f0 0%, #fee9e0 40%, #fff1e6 100%);
+            border-radius: 0 0 4rem 4rem;
+            padding-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+
+        .hero {
+            text-align: left;
+            padding: 2rem 0 1rem 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(120deg, #c06c5e, #e3957c, #d47b68);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .subhead {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #a06e5e;
+            margin-top: 0.5rem;
+            border-left: 3px solid #f3bfab;
+            padding-left: 1rem;
+            animation: slideDown 0.5s ease-out 0.1s both;
+        }
+
+        .contact-chip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.5rem 0 1rem;
+            background: rgba(245, 235, 224, 0.7);
+            backdrop-filter: blur(2px);
+            padding: 0.8rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #7f5a4b;
+            animation: slideDown 0.5s ease-out 0.2s both;
+        }
+
+        .abstract-sep {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #f0b7a5, #fad2c0, #fff0e6);
+            border-radius: 4px;
+            margin: 1rem 0 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .abstract-sep::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -80px;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #d47b68, transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -80px; }
+            100% { left: 100%; }
+        }
+
+        .section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 650;
+            color: #c47a64;
+            letter-spacing: -0.3px;
+            display: inline-block;
+            background: #fff1e9;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            margin-bottom: 1.8rem;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: #ffffffd9;
+            border-radius: 2rem;
+            padding: 1.4rem 1.8rem;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.02);
+            border: 1px solid #ffe4d6;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: #ecc2ae;
+            background: #ffffff;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            font-weight: 550;
+            color: #b5654b;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(4px);
+        }
+
+        .timeline-item strong {
+            color: #c0694e;
+            display: block;
+            font-size: 1rem;
+        }
+
+        .date-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #cb917c;
+            letter-spacing: 0.4px;
+            margin-top: 0.2rem;
+        }
+
+        .skill-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+
+        .skill-badge {
+            background: #f7e3da;
+            padding: 0.3rem 1.1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #855a48;
+            transition: all 0.2s ease;
+            cursor: default;
+        }
+
+        .skill-badge:hover {
+            background: #e8cfc0;
+            transform: scale(1.03);
+            color: #6b4234;
+        }
+
+        .contact-block {
+            background: #fff3ec;
+            border-radius: 2rem;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-block:hover {
+            background: #ffefe6;
+            transform: scale(0.98);
+        }
+
+        .contact-block h3 {
+            font-size: 1.5rem;
+            color: #bb6b51;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-outline {
+            background: #f5e4db;
+            margin-top: 1rem;
+            display: inline-block;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            color: #b16248;
+            border: 1px solid #eccbbd;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: #e8cfc0;
+            transform: scale(1.02);
+            border-color: #c69072;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid #f5e0d4;
+            font-size: 0.75rem;
+            color: #b99482;
+        }
+
+        /* 滾動出現動畫 */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .section, .two-col, .contact-block {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .two-col { animation-delay: 0.2s; }
+        .contact-block { animation-delay: 0.3s; }
+
+        @media (max-width: 750px) {
+            .hero h1 { font-size: 2.6rem; }
+            .container { padding: 1.5rem; }
+            .two-col { grid-template-columns: 1fr; gap: 1rem; }
+            .section-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="gradient-bg">
+    <div class="container">
+        <div class="hero">
+            <h1>Chan Lok Yiu</h1>
+            <div class="subhead">Mathematics in Computer Science · Digital Media & Creative Art</div>
+            <div class="contact-chip">
+                <span>📞 +852 93530511</span>
+                <span>✉️ yiubb926@icloud.com</span>
+                <span>📍 HKUST · Expected 2028</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="abstract-sep"></div>
+
+    <!-- About Me -->
+    <div class="section">
+        <div class="section-title">01 / ABOUT ME</div>
+        <div class="info-card" style="background: #fef7f1;">
+            <p>Second-year Mathematics in Computer Science student at HKUST with an extended major in Digital Media and Creative Art. Building a strong quantitative foundation through Calculus and Linear Algebra, while actively developing programming skills in Python and C++. Proven quick learner, structured problem-solver, and effective communicator through tutoring and event support roles. Seeking an internship in data analysis, business analysis, or IT where I can actively contribute and grow within a strategic team.</p>
+        </div>
+    </div>
+
+    <!-- Education + Work Experience -->
+    <div class="two-col">
+        <div class="info-card">
+            <h3>🎓 EDUCATION</h3>
+            <div class="timeline-item">
+                <strong>HKUST · 2024 - 2028</strong>
+                <div>BSc in Mathematics in Computer Science</div>
+                <div>Extended Major in Digital Media & Creative Art</div>
+                <div class="skill-cloud">
+                    <span class="skill-badge">Calculus</span>
+                    <span class="skill-badge">Linear Algebra</span>
+                    <span class="skill-badge">Python Programming</span>
+                    <span class="skill-badge">C++ Programming</span>
+                    <span class="skill-badge">Discrete Structure</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h3>💼 WORK EXPERIENCE</h3>
+            <div class="timeline-item">
+                <strong>Tutor</strong>
+                <div class="date-tag">Self-employed · Jul 2024 - Present</div>
+                <div>Provide one-on-one academic coaching, tailoring methods to individual learning styles to improve student grades. Develop strong communication and explanation skills by breaking down complex concepts.</div>
+            </div>
+            <div class="timeline-item">
+                <strong>Event Assistant</strong>
+                <div class="date-tag">Untilbank (Datway Music Festival) · Sep 2025</div>
+                <div>Support logistics and attendee coordination for the event, ensuring smooth operations. Adapt quickly to dynamic tasks in a team-based environment.</div>
+            </div>
+            <div class="timeline-item">
+                <strong>Piano Instructor</strong>
+                <div class="date-tag">Self-employed · Jul 2024 - Dec 2024</div>
+                <div>Design structured lesson plans for beginners, enhancing student engagement and technical proficiency. Demonstrate patience, discipline, and the ability to track progress over time.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <div class="section-title">SKILLS</div>
+        <div class="two-col" style="gap:1.2rem;">
+            <div class="info-card">
+                <p><strong>Programming Languages</strong></p>
+                <div class="skill-cloud">
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">C++</span>
+                </div>
+            </div>
+            <div class="info-card">
+                <p><strong>Quantitative Analysis</strong></p>
+                <div class="skill-cloud">
+                    <span class="skill-badge">Calculus</span>
+                    <span class="skill-badge">Linear Algebra</span>
+		    <span class="skill-badge">Discrete Structure</span>
+		    <span class="skill-badge">Mathematics Analysis</span>
+                </div>
+            </div>
+            <div class="info-card">
+                <p><strong>Software & Tools</strong></p>
+                <div class="skill-cloud">
+                    <span class="skill-badge">Microsoft Excel</span>
+                    <span class="skill-badge">PowerPoint</span>
+		    <span class="skill-badge">Canva</span>
+                </div>
+            </div>
+            <div class="info-card">
+                <p><strong>Languages</strong></p>
+                <div class="skill-cloud">
+                    <span class="skill-badge">Cantonese (Native)</span>
+                    <span class="skill-badge">English (Fluent)</span>
+                    <span class="skill-badge">Putonghua (Fluent)</span>
+                </div>
+            </div>
+            <div class="info-card">
+                <p><strong>Other</strong></p>
+                <div class="skill-cloud">
+                    <span class="skill-badge">Creative Strategy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-block">
+        <h3>Contact</h3>
+        <div class="contact-chip" style="justify-content: center; background: #fff0e6; margin-top: 0.6rem;">
+            <span>📧 yiubb926@icloud.com</span>
+            <span>📞 +852 93530511</span>
+        </div>
+        <a href="ChanLokYiu.pdf" class="btn-outline">Download CV (PDF)</a>
+    </div>
+
+    <footer>
+        Chan Lok Yiu · HKUST · Class of 2028
+    </footer>
+</div>
+</body>
+</html>
